@@ -2,13 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import style from './SignUpSignIn.css';
-import {
-  getUser,
-  signUpUser,
-  signInUser,
-  signOutUser,
-} from '../../services/users';
-import { useEffect } from 'react';
+import { getUser, signUpUser, signInUser } from '../../services/users';
 import { useHistory } from 'react-router-dom';
 
 export default function SignUpSignIn({ isSigningUp = false }) {

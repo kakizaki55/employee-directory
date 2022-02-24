@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
+import { signOutUser } from '../../services/users';
 import style from './Header.css';
 
 export default function Header() {
@@ -12,6 +12,7 @@ export default function Header() {
     history.push('/login');
   };
   const handleLogoutButton = () => {
+    signOutUser();
     history.push('/');
   };
   return (

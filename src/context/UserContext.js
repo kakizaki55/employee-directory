@@ -12,8 +12,8 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = getUser();
-      console.log(response.id, response.email);
-      setUser(id, email);
+      console.log(response);
+      setUser({ id: response.id, email: response.email });
     };
     fetchUser();
   }, []);
