@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../context/ProfileContext';
 import { useUser } from '../../context/UserContext';
@@ -8,11 +8,9 @@ import { createProfile, updateProfile } from '../../services/profiles';
 import { getProfile } from '../../services/profiles';
 
 export default function CreateEditProfileForm({ isEditing = false }) {
-  const { profileObj, setProfileObj } = useProfile();
-  const { user } = useUser();
+  const { profileObj, setProfileObj, setShouldQuery } = useProfile();
 
-  //editing is coming back true
-  console.log('isEditing', isEditing);
+  const { user } = useUser();
   const history = useHistory();
 
   const { form, handleFormChange, clearForm, setForm } = useForm({
@@ -36,7 +34,8 @@ export default function CreateEditProfileForm({ isEditing = false }) {
     e.preventDefault();
     if (isEditing) {
       updateProfile(form);
-      history.replace('/profile');
+      history.push('/profile');
+      setShouldQuery(true);
     } else {
       createProfile(form);
       history.replace('/profile');
@@ -63,8 +62,8 @@ export default function CreateEditProfileForm({ isEditing = false }) {
             {/* need a way to get rid of the console error */}
             <input
               type="email"
-              name="birthday"
-              value={user.email}
+              name="email"
+              defaultValue={form.email}
               onChange={handleFormChange}
               disabled
             />

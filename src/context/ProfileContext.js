@@ -5,16 +5,18 @@ const ProfileContext = createContext();
 
 export const ProfileProvider = ({ children }) => {
   const [profileObj, setProfileObj] = useState({});
+  const [shouldQuery, setShouldQuery] = useState(false);
 
   useEffect(() => {
     const fetchProfile = async () => {
       const response = await getProfile();
       setProfileObj(response);
+      setShouldQuery(false);
     };
     fetchProfile();
-  }, [profileObj]);
+  }, [shouldQuery]);
 
-  const values = { profileObj, setProfileObj };
+  const values = { profileObj, setProfileObj, shouldQuery, setShouldQuery };
   return (
     <ProfileContext.Provider value={values}>{children}</ProfileContext.Provider>
   );

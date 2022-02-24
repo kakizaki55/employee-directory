@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../context/ProfileContext';
 import { useUser } from '../../context/UserContext';
@@ -7,9 +8,13 @@ import style from './Profile.css';
 
 export default function Profile() {
   const { user } = useUser();
+  const [currentProfile, setCurrentProfile] = useState();
+  const history = useHistory();
+
   const { profileObj } = useProfile();
   const { bio, name, email, birthday } = profileObj;
-  const history = useHistory();
+
+  useEffect(() => {}, []);
 
   const handleEditButton = () => {
     history.push('./profile/edit');
@@ -26,7 +31,7 @@ export default function Profile() {
           <button onClick={handleEditButton}>edit</button>
         </div>
       ) : (
-        <CreateEditProfile />
+        <div></div>
       )}
     </div>
   );
