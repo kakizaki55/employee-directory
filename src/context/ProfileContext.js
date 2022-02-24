@@ -1,9 +1,18 @@
-import { useState, useContext, createContext } from 'react';
+import { useState, useContext, createContext, useEffect } from 'react';
+import { getProfile } from '../services/profiles';
 
 const ProfileContext = createContext();
 
 export const ProfileProvider = ({ children }) => {
-  const [profileObj, setProfileObj] = useState({ lol: 'check check' });
+  const [profileObj, setProfileObj] = useState({});
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const response = await getProfile();
+      setProfileObj(response);
+    };
+    fetchProfile();
+  }, []);
 
   const values = { profileObj, setProfileObj };
   return (

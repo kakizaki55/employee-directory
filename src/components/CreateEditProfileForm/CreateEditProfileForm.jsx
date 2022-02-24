@@ -1,13 +1,16 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../context/ProfileContext';
 import { useUser } from '../../context/UserContext';
 import { useForm } from '../../hooks/useForm';
+import { createProfile } from '../../services/profiles';
 
 export default function CreateEditProfileForm() {
-  //   const { profileObj, setProfileObj } = useProfile();
+  const { profileObj, setProfileObj } = useProfile();
   const { user } = useUser();
-  console.log(user.email);
+
+  const history = useHistory();
 
   const { form, handleFormChange, clearForm } = useForm({
     email: user.email || '',
@@ -17,10 +20,10 @@ export default function CreateEditProfileForm() {
     clearForm();
   }, []);
 
-  console.log('form', form);
   const handleForm = (e) => {
     e.preventDefault();
-    console.log('clicky inside handle form');
+    createProfile(form);
+    history.replace('/profile');
   };
   return (
     <div>

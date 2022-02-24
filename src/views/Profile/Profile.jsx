@@ -1,15 +1,28 @@
 import React from 'react';
+import { useProfile } from '../../context/ProfileContext';
 import { useUser } from '../../context/UserContext';
 import CreateEditProfile from '../CreateEditProfile/CreateEditProfile';
 
 export default function Profile() {
   const { user } = useUser();
-  console.log(user.id, user.email);
+  const { profileObj } = useProfile();
+  console.log(profileObj);
+  const { bio, name, email, birthday } = profileObj;
+
   return (
     <div>
       {user.id}
       {user.email}
-      <CreateEditProfile />
+      {name ? (
+        <div>
+          <h3>{name}</h3>
+          <div>{email}</div>
+          <div>{birthday}</div>
+          <div>{bio}</div>
+        </div>
+      ) : (
+        <CreateEditProfile />
+      )}
     </div>
   );
 }
