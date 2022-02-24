@@ -5,7 +5,7 @@ import style from './Register.css';
 export default function RegisterLogin() {
   return (
     <div className={style.formContainer}>
-      <SignUpSignIn />
+      <SignUpSignIn isSigningUp />
     </div>
   );
 }
