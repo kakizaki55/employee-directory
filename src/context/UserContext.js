@@ -4,15 +4,11 @@ import { getUser } from '../services/users';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    id: 1234151235,
-    email: 'Minoka@gmail.com',
-  });
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const fetchUser = async () => {
       const response = getUser();
-      console.log(response);
       setUser({ id: response.id, email: response.email });
     };
     fetchUser();
