@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './views/Home/Home';
-import Login from './views/Login/Login';
-import Register from './views/Register/Register';
+import CreateEditProfile from './views/CreateEditProfile/CreateEditProfile';
+import RegisterLogin from './views/RegisterLogin/RegisterLogin';
 import Profile from './views/Profile/Profile';
 import Layout from './components/Layout/Layout';
 import { UserProvider } from './context/UserContext';
@@ -14,10 +14,16 @@ export default function App() {
         <Layout>
           <Switch>
             <Route path="/login">
-              <Login />
+              <RegisterLogin />
             </Route>
-            <Route path="/register">
-              <Register />
+            <Route path="/register" isSigningUp>
+              <RegisterLogin />
+            </Route>
+            <Route path="/profile/edit">
+              <CreateEditProfile />
+            </Route>
+            <Route path="/profile/create" isCreating>
+              <CreateEditProfile />
             </Route>
             <Route path="/profile">
               <Profile />
