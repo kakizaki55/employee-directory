@@ -7,17 +7,16 @@ export default function SignUpSignIn() {
   return (
     <div>
       <form className={style.form}>
-        <label className={style.label} for="email">
+        <label className={style.label} htmlFor="email">
           Email :
           <input type="email" name="email" />
         </label>
-        <label className={style.label} for="password">
+        <label className={style.label} htmlFor="password">
           Password :
           <input type="password" name="password" />
         </label>
         <button>register</button>
       </form>
-
     </div>
   );
 }

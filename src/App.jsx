@@ -4,36 +4,34 @@ import CreateEditProfile from './views/CreateEditProfile/CreateEditProfile';
 import RegisterLogin from './views/RegisterLogin/RegisterLogin';
 import Profile from './views/Profile/Profile';
 import Layout from './components/Layout/Layout';
-import { UserProvider } from './context/UserContext';
+
 import './App.css';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <UserProvider>
-        <Layout>
-          <Switch>
-            <Route path="/login">
-              <RegisterLogin />
-            </Route>
-            <Route path="/register" isSigningUp>
-              <RegisterLogin />
-            </Route>
-            <Route path="/profile/edit">
-              <CreateEditProfile />
-            </Route>
-            <Route path="/profile/create" isCreating>
-              <CreateEditProfile />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </Layout>
-      </UserProvider>
+      <Layout>
+        <Switch>
+          <Route path="/login">
+            <RegisterLogin />
+          </Route>
+          <Route path="/register" isSigningUp>
+            <RegisterLogin />
+          </Route>
+          <Route path="/profile/edit">
+            <CreateEditProfile />
+          </Route>
+          <Route path="/profile/create" isCreating>
+            <CreateEditProfile />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 }

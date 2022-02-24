@@ -1,5 +1,15 @@
 import React from 'react';
+import CreateEditProfileForm from '../../components/CreateEditProfileForm/CreateEditProfileForm';
+import { useProfile } from '../../context/ProfileContext';
 
 export default function CreateEditProfile() {
-  return <div>createEditProfile</div>;
+  const { profileObj, setProfileObj } = useProfile();
+
+  console.log('ProfileObj', profileObj);
+
+  return (
+    <div>
+      <CreateEditProfileForm />
+    </div>
+  );
 }

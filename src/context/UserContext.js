@@ -6,7 +6,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
     id: 1234151235,
     email: 'Minoka@gmail.com',
-    about: 'some info about me',
+    password: '12345678',
   });
 
   const values = { user, setUser };

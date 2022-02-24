@@ -7,4 +7,5 @@
   border-bottom: rgb(50, 49, 49) solid 2px;
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
