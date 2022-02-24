@@ -17,7 +17,7 @@ export default function Header() {
   };
   return (
     <header className={style.header}>
-      <span>Employee Directory</span>
+      <span>ACME Employee Directory</span>
       <div>
         <button onClick={handleLoginButton}>login</button>
         <button onClick={handleSignUpButton}>sign up</button>
