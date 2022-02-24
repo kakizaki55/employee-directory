@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useUser } from '../context/UserContext';
 
 export const useForm = () => {
   const [form, setForm] = useState({});
@@ -10,8 +11,9 @@ export const useForm = () => {
     });
   };
 
+  const { user } = useUser();
   const clearForm = () => {
-    setForm({});
+    setForm({ email: user.email });
   };
 
   return { form, handleFormChange, clearForm };
