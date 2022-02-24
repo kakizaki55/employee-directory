@@ -4,26 +4,43 @@ import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../context/ProfileContext';
 import { useUser } from '../../context/UserContext';
 import { useForm } from '../../hooks/useForm';
-import { createProfile } from '../../services/profiles';
+import { createProfile, updateProfile } from '../../services/profiles';
+import { getProfile } from '../../services/profiles';
 
-export default function CreateEditProfileForm() {
+export default function CreateEditProfileForm({ isEditing = false }) {
   const { profileObj, setProfileObj } = useProfile();
   const { user } = useUser();
 
+  //editing is coming back true
+  console.log('isEditing', isEditing);
   const history = useHistory();
 
-  const { form, handleFormChange, clearForm } = useForm({
+  const { form, handleFormChange, clearForm, setForm } = useForm({
     email: user.email || '',
   });
-
+  console.log('form', form);
   useEffect(() => {
-    clearForm();
+    if (isEditing) {
+      const fetchProfile = async () => {
+        const response = await getProfile();
+        console.log('response', response);
+        setForm(response);
+      };
+      fetchProfile();
+    } else {
+      clearForm();
+    }
   }, []);
 
   const handleForm = (e) => {
     e.preventDefault();
-    createProfile(form);
-    history.replace('/profile');
+    if (isEditing) {
+      updateProfile(form);
+      history.replace('/profile');
+    } else {
+      createProfile(form);
+      history.replace('/profile');
+    }
   };
   return (
     <div>

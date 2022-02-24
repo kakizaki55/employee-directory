@@ -15,13 +15,13 @@ export default function App() {
           <Route path="/login">
             <RegisterLogin />
           </Route>
-          <Route path="/register" isSigningUp>
-            <RegisterLogin />
+          <Route path="/register">
+            <RegisterLogin isSigningUp />
           </Route>
           <Route path="/profile/edit">
-            <CreateEditProfile />
+            <CreateEditProfile isEditing />
           </Route>
-          <Route path="/profile/create" isCreating>
+          <Route path="/profile/create">
             <CreateEditProfile />
           </Route>
           <Route path="/profile">

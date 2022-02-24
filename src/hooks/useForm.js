@@ -16,5 +16,5 @@ export const useForm = () => {
     setForm({ email: user.email });
   };
 
-  return { form, handleFormChange, clearForm };
+  return { form, handleFormChange, clearForm, setForm };
 };

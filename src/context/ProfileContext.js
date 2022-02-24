@@ -12,7 +12,7 @@ export const ProfileProvider = ({ children }) => {
       setProfileObj(response);
     };
     fetchProfile();
-  }, []);
+  }, [profileObj]);
 
   const values = { profileObj, setProfileObj };
   return (
