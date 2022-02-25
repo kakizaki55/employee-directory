@@ -6,7 +6,6 @@ import { useUser } from '../../context/UserContext';
 
 export default function Header() {
   const { user, setShouldRender } = useUser();
-  console.log(user);
 
   const history = useHistory();
   const handleSignUpButton = () => {

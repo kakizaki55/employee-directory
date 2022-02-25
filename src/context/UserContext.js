@@ -5,8 +5,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  const [shouldRender, setShouldRender] = useState(false);
-  console.log('shouldRender', shouldRender);
+  const [setShouldRender] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {

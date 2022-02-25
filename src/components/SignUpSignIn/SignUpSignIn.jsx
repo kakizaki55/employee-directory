@@ -11,10 +11,6 @@ export default function SignUpSignIn({ isSigningUp = false }) {
 
   const history = useHistory();
 
-  console.log('isSigningUp', isSigningUp);
-
-  const { user, setUser } = useUser();
-
   const handleForm = (e) => {
     e.preventDefault();
     signInUser(email, password);
@@ -27,6 +23,7 @@ export default function SignUpSignIn({ isSigningUp = false }) {
         <label className={style.label} htmlFor="email">
           Email :
           <input
+            aria-label="email"
             type="email"
             name="email"
             value={email}
@@ -36,6 +33,7 @@ export default function SignUpSignIn({ isSigningUp = false }) {
         <label className={style.label} htmlFor="password">
           Password :
           <input
+            aria-label="password"
             type="password"
             name="password"
             value={password}
