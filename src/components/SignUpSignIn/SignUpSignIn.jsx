@@ -11,6 +11,8 @@ export default function SignUpSignIn({ isSigningUp = false }) {
 
   const history = useHistory();
 
+  console.log('isSigningUp', isSigningUp);
+
   const { user, setUser } = useUser();
 
   const handleForm = (e) => {
@@ -40,7 +42,7 @@ export default function SignUpSignIn({ isSigningUp = false }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button>sign in</button>
+        {isSigningUp ? <button>sign up</button> : <button>sign in</button>}
       </form>
     </div>
   );

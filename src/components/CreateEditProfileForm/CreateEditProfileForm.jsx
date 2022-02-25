@@ -8,7 +8,7 @@ import { createProfile, updateProfile } from '../../services/profiles';
 import { getProfile } from '../../services/profiles';
 
 export default function CreateEditProfileForm({ isEditing = false }) {
-  const { profileObj, setProfileObj, setShouldQuery } = useProfile();
+  const { setShouldQuery } = useProfile();
 
   const { user } = useUser();
   const history = useHistory();
@@ -59,7 +59,6 @@ export default function CreateEditProfileForm({ isEditing = false }) {
         <section>
           <label htmlFor="email">
             <span>email :</span>
-            {/* need a way to get rid of the console error */}
             <input
               type="email"
               name="email"

@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { signOutUser } from '../../services/users';
 import style from './Header.css';
+import { useUser } from '../../context/UserContext';
 
 export default function Header() {
+  const { user, setShouldRender } = useUser();
+  console.log(user);
+
   const history = useHistory();
   const handleSignUpButton = () => {
     history.push('/register');
@@ -13,6 +17,7 @@ export default function Header() {
   };
   const handleLogoutButton = () => {
     signOutUser();
+    setShouldRender(true);
     history.push('/');
   };
   return (
@@ -21,7 +26,11 @@ export default function Header() {
       <div>
         <button onClick={handleLoginButton}>login</button>
         <button onClick={handleSignUpButton}>sign up</button>
-        <button onClick={handleLogoutButton}>logout</button>
+        {user.email ? (
+          <button onClick={handleLogoutButton}>logout</button>
+        ) : (
+          <></>
+        )}
       </div>
     </header>
   );

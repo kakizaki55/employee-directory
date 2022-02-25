@@ -4,6 +4,7 @@ import CreateEditProfile from './views/CreateEditProfile/CreateEditProfile';
 import RegisterLogin from './views/RegisterLogin/RegisterLogin';
 import Profile from './views/Profile/Profile';
 import Layout from './components/Layout/Layout';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 import './App.css';
 
@@ -18,15 +19,15 @@ export default function App() {
           <Route path="/register">
             <RegisterLogin isSigningUp />
           </Route>
-          <Route path="/profile/edit">
+          <PrivateRoute path="/profile/edit">
             <CreateEditProfile isEditing />
-          </Route>
-          <Route path="/profile/create">
+          </PrivateRoute>
+          <PrivateRoute path="/profile/create">
             <CreateEditProfile />
-          </Route>
-          <Route path="/profile">
+          </PrivateRoute>
+          <PrivateRoute path="/profile">
             <Profile />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>
