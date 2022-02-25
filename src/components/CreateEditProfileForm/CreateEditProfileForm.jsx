@@ -16,7 +16,7 @@ export default function CreateEditProfileForm({ isEditing = false }) {
   const { form, handleFormChange, clearForm, setForm } = useForm({
     email: user.email || '',
   });
-  console.log('form', form);
+
   useEffect(() => {
     if (isEditing) {
       const fetchProfile = async () => {
@@ -34,7 +34,7 @@ export default function CreateEditProfileForm({ isEditing = false }) {
     e.preventDefault();
     if (isEditing) {
       updateProfile(form);
-      history.push('/profile');
+      history.replace('/profile');
       setShouldQuery(true);
     } else {
       createProfile(form);
