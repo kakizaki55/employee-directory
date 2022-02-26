@@ -1,0 +1,12 @@
+.footer {
+  font-size: 1rem;
+  display: flex;
+  background-color: rgb(154, 130, 85);
+  padding: 10px;
+  margin: 0;
+  border-top: rgb(50, 49, 49) solid 2px;
+  bottom: 0;
+  height: 3rem;
+  position: absolute;
+  width: 100%;
+}
